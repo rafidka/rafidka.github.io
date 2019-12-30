@@ -1,9 +1,10 @@
 ---
 layout: default
-title: Rafid Al-Humaimidi
 ---
 
-This is my personal website. 
+I am a software engineer currently working at AWS in Vancouver, BC. Aside from
+my main job, I also do a lot of Machine Learning recently. The content of this
+website is personal and doesn't represent my employer in any way.
 
 # Scientific/Technical Publications
 
@@ -23,8 +24,6 @@ This is my personal website.
 
 # Contact
 
-- Email: \<Same username used below\>@gmail.com
-- Twitter: https://twitter.com/rafidka/
-- LinkedIn: https://www.linkedin.com/in/rafidka
-- Medium: https://medium.com/@rafidka
-- Kaggle: https://kaggle.com/rafidka/
+I am available on multiple platforms which are linked to at the top of the page.
+If you would like to reach me by email, please write to me at \<same username
+used in my twitter account>@gmail.com.
