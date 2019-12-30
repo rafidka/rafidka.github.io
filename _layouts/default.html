@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
-
-    {% if site.google_analytics %}
-      <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{ site.google_analytics }}');
-      </script>
-    {% endif %}
     <meta charset="UTF-8">
 
 {% seo %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Rafid Al-Humaimidi</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   </head>
   <body>
     <header class="page-header" role="banner">
-      <h1 class="project-name">Rafid Al-Humaimidi</h1>
-      <h2 class="project-tagline">My personal website</h2>
-      <a href="https://twitter.com/rafidka/" target="_blank" class="btn">Twitter</a>
-      <a href="https://github.com/rafidka" target="_blank" class="btn">GitHub</a>
-      <a href="https://linkedin.com/in/rafidka" target="_blank" class="btn">LinkedIn</a>
-      <a href="https://medium.com/@rafidka/" target="_blank" class="btn">Medium</a>
-      <a href="https://www.kaggle.com/rafidka/" target="_blank" class="btn">Kaggle</a>
+      <div class="page-title">
+        <div>
+          <h1 class="project-name">
+            Rafid Al-Humaimidi
+          </h1>
+          <h2 class="project-tagline" style="text-align: left;">
+            <div>Software Dev @ Amazon (AWS)</div>
+            <div>Machine Learning Enthusiast</div>
+          </h2>
+        </div>
+        <div class="logo-container">
+          <img src="/assets/images/logo.png" class="logo" />
+        </div>
+      </div>
+
+      <div class="contact-buttons">
+        <a href="https://twitter.com/rafidka/" target="_blank" class="btn">Twitter</a>
+        <a href="https://linkedin.com/in/rafidka" target="_blank" class="btn">LinkedIn</a>
+        <a href="https://medium.com/@rafidka/" target="_blank" class="btn">Medium</a>
+        <a href="https://github.com/rafidka" target="_blank" class="btn">GitHub</a>
+        <a href="https://www.kaggle.com/rafidka/" target="_blank" class="btn">Kaggle</a>
+      </div>
     </header>
 
     <main id="content" class="main-content" role="main">

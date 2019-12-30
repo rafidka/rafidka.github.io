@@ -14,9 +14,10 @@ website is personal and doesn't represent my employer in any way.
 - [Full Text Search – Part 2: Token Processing](https://rafidka.wordpress.com/2016/05/15/full-text-search-part-2-token-processing/) (May 2016)
 - [Full Text Search – Part 1: Tokenization](https://rafidka.wordpress.com/2016/05/14/full-text-search-part-1-tokenization/) (May 2016)
 - [Easy Caching with C# and PostSharp](https://www.codeproject.com/Articles/696774/Easy-Caching-with-Csharp-and-PostSharp) (Dec 2013)
-- [Advanced Composition in Virtual Camera Control](https://books.google.ca/books/about/Advanced_Composition_in_Virtual_Camera_C.html?id=Aa5atwAACAAJ&redir_esc=y) (MPhil Thesis, Newcastle University, 2002)
+- [Advanced Composition in Virtual Camera Control](https://books.google.ca/books/about/Advanced_Composition_in_Virtual_Camera_C.html?id=Aa5atwAACAAJ&redir_esc=y) (MPhil Thesis, Newcastle University, 2011)
 - [Advanced Composition in Virtual Camera Control](https://link.springer.com/chapter/10.1007/978-3-642-22571-0_2) (International Symposium on Smart Graphics 2011)
 - [Creating Strongly Typed Custom Collections in C#](https://www.c-sharpcorner.com/article/creating-strongly-typed-custom-collections-in-C-Sharp/) (Sep 2002)
+
 
 # Non-Scientific Publications
 
