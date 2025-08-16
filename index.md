@@ -76,7 +76,16 @@ _Coming soon..._
 
 ## All-Time Keepers
 
-_Books and papers that shaped my thinking - to be added_
+- **Python Essential Reference** by David Beazley
+- **A Tour of C++** by Bjarne Stroustrup  
+- **The Strangest Man: The Hidden Life of Paul Dirac, Quantum Genius** by Graham Farmelo
+- **Designing Data-Intensive Applications** by Martin Kleppmann
+- **Why We Sleep** by Matthew Walker
+- **Flow: The Psychology of Optimal Experience** by Mihaly Csikszentmihalyi
+- **Operating Systems: Three Easy Pieces** by Remzi Arpaci-Dusseau and Andrea Arpaci-Dusseau
+- **David and Goliath** by Malcolm Gladwell
+- **Without Conscience** by Robert Hare
+- **The Prince of Mathematics: Carl Friedrich Gauss** by M.B.W. Tent
 
 # Contact
 
