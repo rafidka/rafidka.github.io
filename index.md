@@ -14,6 +14,40 @@ layout: default
 - **[Alusus Programming Language](https://github.com/Alusus/Alusus)** - LLVM-based programming language compiler
 - **[Alkitab](https://github.com/rafidka/alkitab)** - Modern Quranic text processing toolkit
 
+# Career Highlights
+
+## Current Role: Member of Technical Staff @ Cohere
+
+Building and improving **Compass**, an enterprise-grade retrieval platform that powers RAG pipelines. Key contributions include:
+
+- Designed the **end-to-end evaluation framework** with retry mechanisms, checkpointing, and LLM-based evaluation for scalable IR experiments
+- Shipped multiple integrations: **web2compass** for RAG-enabled documentation, **MCP tooling** for North, and **code2compass** for semantic code search
+- Improved **Compass Parser efficiency** for vision-language models, achieving **50% memory reduction** in image-to-markdown tasks
+- Led development of **Compass SDK V2** with async support and built the **Compass Asset Service** for scalable ingestion pipelines
+- Implemented **Postgres-based job queue** replacing Celery for improved reliability in long-running jobs
+- Contributed to open-source by adding **Cohere support to Pydantic-AI**
+
+## Key Amazon/AWS Achievements
+
+- **Founding engineer** on **Amazon Managed Apache Airflow (MWAA)**, leading design and launch at re:Invent 2020; scaled to **15+ global regions**
+- Led modernization of the **Distributed Job Scheduler** backend using Elasticsearch, powering **large-scale scheduling across Amazon**
+- Built platform services for **Amazon Mobile Shopping App** serving **millions of retail customers**
+- Championed open source with **amazon-mwaa-docker-images** repository serving **thousands of MWAA environments**
+
+## Systems & Low-Level Programming Background
+
+- **C++ expertise**: Lead developer on **Alusus Programming Language** compiler using **LLVM**, imaging modules with **AutoCAD DWG/DXF** reverse engineering
+- **High-performance systems**: Financial workflow orchestration platforms, real-time alerting systems with **Elasticsearch**
+- **Infrastructure at scale**: **Google App Engine** migrations, **NetworkedBlogs** optimization for hundreds of thousands of users
+
+# Skills & Technologies
+
+**Machine Learning**: PyTorch, CLIP, BERT, LLM evaluation, LLM-as-a-judge, synthetic data generation, information retrieval, multi-modal models, autograd systems
+
+**Cloud & Infrastructure**: AWS (ECS, Lambda, Step Functions, DynamoDB, RDS, CloudWatch), Elasticsearch, Docker, PostgreSQL, Apache Airflow, Google App Engine
+
+**Programming Languages**: Python, C++, TypeScript, Java, Golang, C#, PHP
+
 # Scientific/Technical Publications
 
 - [Alexa Visual Item Selection (AVIS) Dataset](https://www.amazon.science/publications/visual-item-selection-with-voice-assistants) (Amazon Computer Vision Conference 2023)
