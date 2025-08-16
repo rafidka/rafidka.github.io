@@ -10,7 +10,6 @@ layout: default
 - **[image-search](https://github.com/rafidka/image-search-with-human-language)** - Natural language image search using CLIP
 - **[pat-cli](https://github.com/rafidka/pat-cli)** - ML-powered log clustering tool
 - **[amazon-mwaa-docker-images](https://github.com/aws/amazon-mwaa-docker-images)** - Docker infrastructure for Apache Airflow
-- **[boto3async](https://github.com/rafidka/boto3async)** - Async wrapper for AWS boto3 library
 - **[Alusus Programming Language](https://github.com/Alusus/Alusus)** - LLVM-based programming language compiler
 - **[Alkitab](https://github.com/rafidka/alkitab)** - Modern Quranic text processing toolkit
 
