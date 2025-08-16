@@ -2,17 +2,6 @@
 layout: default
 ---
 
-# Selected Projects
-
-- **[Compass @ Cohere](https://cohere.com/compass)** - Enterprise search and retrieval platform
-- **[microtorch](https://github.com/rafidka/microtorch)** - Lightweight deep learning framework
-- **[neuroscout](https://github.com/rafidka/neuroscout)** - LLM-powered NeurIPS paper analysis tool
-- **[image-search](https://github.com/rafidka/image-search-with-human-language)** - Natural language image search using CLIP
-- **[pat-cli](https://github.com/rafidka/pat-cli)** - ML-powered log clustering tool
-- **[amazon-mwaa-docker-images](https://github.com/aws/amazon-mwaa-docker-images)** - Docker infrastructure for Apache Airflow
-- **[Alusus Programming Language](https://github.com/Alusus/Alusus)** - LLVM-based programming language compiler
-- **[Alkitab](https://github.com/rafidka/alkitab)** - Modern Quranic text processing toolkit
-
 # Career Highlights
 
 ## Current Role: Member of Technical Staff @ Cohere
@@ -38,6 +27,17 @@ Building and improving **Compass**, an enterprise-grade retrieval platform that 
 - **C++ expertise**: Lead developer on **Alusus Programming Language** compiler using **LLVM**, imaging modules with **AutoCAD DWG/DXF** reverse engineering
 - **High-performance systems**: Financial workflow orchestration platforms, real-time alerting systems with **Elasticsearch**
 - **Infrastructure at scale**: **Google App Engine** migrations, **NetworkedBlogs** optimization for hundreds of thousands of users
+
+# Selected Projects
+
+- **[Compass @ Cohere](https://cohere.com/compass)** - Enterprise search and retrieval platform
+- **[microtorch](https://github.com/rafidka/microtorch)** - Lightweight deep learning framework
+- **[neuroscout](https://github.com/rafidka/neuroscout)** - LLM-powered NeurIPS paper analysis tool
+- **[image-search](https://github.com/rafidka/image-search-with-human-language)** - Natural language image search using CLIP
+- **[pat-cli](https://github.com/rafidka/pat-cli)** - ML-powered log clustering tool
+- **[amazon-mwaa-docker-images](https://github.com/aws/amazon-mwaa-docker-images)** - Docker infrastructure for Apache Airflow
+- **[Alusus Programming Language](https://github.com/Alusus/Alusus)** - LLVM-based programming language compiler
+- **[Alkitab](https://github.com/rafidka/alkitab)** - Modern Quranic text processing toolkit
 
 # Skills & Technologies
 
@@ -81,7 +81,7 @@ Building and improving **Compass**, an enterprise-grade retrieval platform that 
 ## All-Time Keepers
 
 - **Python Essential Reference** by David Beazley
-- **A Tour of C++** by Bjarne Stroustrup  
+- **A Tour of C++** by Bjarne Stroustrup
 - **The Strangest Man: The Hidden Life of Paul Dirac, Quantum Genius** by Graham Farmelo
 - **Designing Data-Intensive Applications** by Martin Kleppmann
 - **Why We Sleep** by Matthew Walker
