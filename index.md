@@ -5,7 +5,7 @@ layout: default
 # Selected Projects
 
 - **[Compass @ Cohere](https://cohere.com/compass)** - Enterprise search and retrieval platform
-- **[microtorch](https://github.com/rafidka/microtorch)** - Lightweight deep learning framework 
+- **[microtorch](https://github.com/rafidka/microtorch)** - Lightweight deep learning framework
 - **[neuroscout](https://github.com/rafidka/neuroscout)** - LLM-powered NeurIPS paper analysis tool
 - **[image-search](https://github.com/rafidka/image-search-with-human-language)** - Natural language image search using CLIP
 - **[pat-cli](https://github.com/rafidka/pat-cli)** - ML-powered log clustering tool
@@ -44,9 +44,9 @@ Building and improving **Compass**, an enterprise-grade retrieval platform that 
 
 **Machine Learning**: PyTorch, CLIP, BERT, LLM evaluation, LLM-as-a-judge, synthetic data generation, information retrieval, multi-modal models, autograd systems
 
-**Cloud & Infrastructure**: AWS (ECS, Lambda, Step Functions, DynamoDB, RDS, CloudWatch), Elasticsearch, Docker, PostgreSQL, Apache Airflow, Google App Engine
+**Cloud & Infrastructure**: AWS (ECS, Lambda, Step Functions, DynamoDB, RDS, CloudWatch), Elasticsearch, Docker, PostgreSQL
 
-**Programming Languages**: Python, C++, TypeScript, Java, Golang, C#, PHP
+**Programming Languages**: Python, C++, JavaScript/TypeScript
 
 # Publications
 
@@ -73,11 +73,11 @@ Building and improving **Compass**, an enterprise-grade retrieval platform that 
 
 ## 2025
 
-*Coming soon...*
+_Coming soon..._
 
 ## All-Time Keepers
 
-*Books and papers that shaped my thinking - to be added*
+_Books and papers that shaped my thinking - to be added_
 
 # Contact
 
