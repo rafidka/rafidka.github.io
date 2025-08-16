@@ -2,9 +2,11 @@
 layout: default
 ---
 
-I am a software engineer currently working at AWS in Vancouver, BC. Aside from
-my main job, I also do a lot of Machine Learning recently. The content of this
-website is personal and doesn't represent my employer in any way.
+# Selected Projects
+
+- **[Compass @ Cohere](https://cohere.com/compass)** - Enterprise search and retrieval platform
+- **[microtorch](https://github.com/rafidka/microtorch)** - Lightweight deep learning framework 
+- **[Alkitab](https://github.com/rafidka/alkitab)** - Modern Quranic text processing toolkit
 
 # Scientific/Technical Publications
 
@@ -26,6 +28,12 @@ website is personal and doesn't represent my employer in any way.
 
 # Contact
 
-I am available on multiple platforms which are linked to at the top of the page.
-If you would like to reach me by email, please write to me at \<same username
-used in my twitter account>@gmail.com.
+<div id="email-contact"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const emailDiv = document.getElementById('email-contact');
+    const email = 'me@rafid.ai';
+    emailDiv.innerHTML = `Feel free to reach out: <a href="mailto:${email}">${email}</a>`;
+});
+</script>
