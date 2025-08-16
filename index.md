@@ -6,10 +6,18 @@ layout: default
 
 - **[Compass @ Cohere](https://cohere.com/compass)** - Enterprise search and retrieval platform
 - **[microtorch](https://github.com/rafidka/microtorch)** - Lightweight deep learning framework 
+- **[neuroscout](https://github.com/rafidka/neuroscout)** - LLM-powered NeurIPS paper analysis tool
+- **[image-search](https://github.com/rafidka/image-search-with-human-language)** - Natural language image search using CLIP
+- **[pat-cli](https://github.com/rafidka/pat-cli)** - ML-powered log clustering tool
+- **[amazon-mwaa-docker-images](https://github.com/aws/amazon-mwaa-docker-images)** - Docker infrastructure for Apache Airflow
+- **[boto3async](https://github.com/rafidka/boto3async)** - Async wrapper for AWS boto3 library
+- **[Alusus Programming Language](https://github.com/Alusus/Alusus)** - LLVM-based programming language compiler
 - **[Alkitab](https://github.com/rafidka/alkitab)** - Modern Quranic text processing toolkit
 
 # Scientific/Technical Publications
 
+- [Alexa Visual Item Selection (AVIS) Dataset](https://www.amazon.science/publications/visual-item-selection-with-voice-assistants) (Amazon Computer Vision Conference 2023)
+- [Visual Item Selection with Voice Assistants](https://www.amazon.science/publications/visual-item-selection-with-voice-assistants) (ACM Web Conference 2023)
 - [Installing Jupyter on a Cloud Machine](https://medium.com/@rafidka/installing-jupyter-on-a-cloud-machine-1671e75d2e01) (Dec 2019)
 - [Useful Shell Tools/Tips for Increasing Productivity](https://medium.com/@rafidka/useful-shell-tools-for-increasing-productivity-16d96d53b466) (Dec 2019)
 - [Full Text Search – Part 3: Building Inverted Index](https://rafidka.wordpress.com/2016/06/05/full-text-search-part-3-building-inverted-index/) (June 2016)
