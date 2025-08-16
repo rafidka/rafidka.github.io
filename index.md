@@ -72,7 +72,11 @@ Building and improving **Compass**, an enterprise-grade retrieval platform that 
 
 ## 2025
 
-_Coming soon..._
+- **Good Energy: The Surprising Connection Between Metabolism and Limitless Health** by Casey Means and Calley Means
+- **The Whole-Brain Child: Revolutionary Strategies to Nurture Your Child's Developing Mind** by Daniel J. Siegel and Tina Payne Bryson
+- **The Expectant Father: The Ultimate Guide for Dads-to-Be** by Armin A. Brott
+- **The Anxious Generation: How the Great Rewiring of Childhood Caused an Epidemic of Mental Illness** by Jonathan Haidt
+- **The Coddling of the American Mind: How Good Intentions and Bad Ideas Are Setting up a Generation for Failure** by Jonathan Haidt and Greg Lukianoff
 
 ## All-Time Keepers
 
