@@ -26,6 +26,16 @@ layout: default
 - [Why is Psychology not Taught in Schools?](https://medium.com/@rafidka/why-is-psychology-not-taught-in-schools-d219d2f681f1) (Nov 2019)
 - [Focus: Reduction of Distractions](https://rafidka.wordpress.com/2018/01/29/focus-reduction-of-distractions/) (Jan 2018)
 
+# Reading List
+
+## 2025
+
+*Coming soon...*
+
+## All-Time Keepers
+
+*Books and papers that shaped my thinking - to be added*
+
 # Contact
 
 <div id="email-contact"></div>
