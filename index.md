@@ -11,7 +11,7 @@ description: "Member of Technical Staff @ Cohere. I build machine learning syste
 Building and improving **Compass**, an enterprise-grade retrieval platform that powers RAG pipelines. Key contributions include:
 
 - Designed the **end-to-end evaluation framework** with retry mechanisms, checkpointing, and LLM-based evaluation for scalable IR experiments
-- Shipped multiple integrations: **web2compass** for RAG-enabled documentation, **MCP tooling** for North, and **code2compass** for semantic code search
+- Shipped multiple integrations: **web2compass** for scraping website into Compass, **MCP tooling** for [North](https://cohere.com/north), and **code2compass** for code bases ingestion into Compass for semantic code search
 - Improved **Compass Parser efficiency** for vision-language models, achieving **50% memory reduction** in image-to-markdown tasks
 - Led development of **Compass SDK V2** with async support and built the **Compass Asset Service** for scalable ingestion pipelines
 - Implemented **Postgres-based job queue** replacing Celery for improved reliability in long-running jobs
