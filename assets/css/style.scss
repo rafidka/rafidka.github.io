@@ -30,7 +30,13 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .logo-container {
-        display: none;
+        padding-top: 0.5rem;
+        text-align: center;
+
+        .logo {
+            width: 100px;
+            border-radius: 10px;
+        }
     }
 
     .nav-buttons {
