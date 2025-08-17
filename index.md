@@ -1,5 +1,7 @@
 ---
 layout: default
+title: "Rafid Al-Humaimidi - MTS @ Cohere"
+description: "Member of Technical Staff @ Cohere. I build machine learning systems with a focus on search and retrieval to power RAG architectures."
 ---
 
 # Career Highlights
