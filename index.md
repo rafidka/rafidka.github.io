@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Rafid Al-Humaimidi - MTS @ Cohere"
+title: "Rafid - MTS @ Cohere"
 description: "Member of Technical Staff @ Cohere. I build machine learning systems with a focus on search and retrieval to power RAG architectures."
 ---
 
@@ -82,16 +82,30 @@ Building and improving **Compass**, an enterprise-grade retrieval platform that 
 
 ## All-Time Keepers
 
-- **Python Essential Reference** by David Beazley
+### Programming Books
+
 - **A Tour of C++** by Bjarne Stroustrup
-- **The Strangest Man: The Hidden Life of Paul Dirac, Quantum Genius** by Graham Farmelo
+- **Python Essential Reference** by David Beazley
+
+### Computer Systems
+
 - **Designing Data-Intensive Applications** by Martin Kleppmann
-- **Why We Sleep** by Matthew Walker
-- **Flow: The Psychology of Optimal Experience** by Mihaly Csikszentmihalyi
 - **Operating Systems: Three Easy Pieces** by Remzi Arpaci-Dusseau and Andrea Arpaci-Dusseau
-- **David and Goliath** by Malcolm Gladwell
-- **Without Conscience** by Robert Hare
+
+### Biographies
+
 - **The Prince of Mathematics: Carl Friedrich Gauss** by M.B.W. Tent
+- **The Strangest Man: The Hidden Life of Paul Dirac, Quantum Genius** by Graham Farmelo
+
+### Psychology
+
+- **Without Conscience** by Robert Hare
+
+### Miscellaneous
+
+- **David and Goliath** by Malcolm Gladwell
+- **Flow: The Psychology of Optimal Experience** by Mihaly Csikszentmihalyi
+- **Why We Sleep** by Matthew Walker
 
 # Contact
 
