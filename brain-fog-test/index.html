@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Brain Fog Self-Check</title>
+<meta name="description" content="A research-informed self-check for brain fog symptoms. Not a diagnostic test.">
+<style>
+  :root {
+    --fg: #1f2933; --muted: #5f6b7a; --bg: #f7f8fa; --card: #fff; --line: #e3e7ec;
+    --accent: #157878; --accent-soft: #e6f2f2; --warn: #9a3412; --warn-soft: #fff4ec;
+    --danger: #991b1b; --danger-soft: #fdecec; --ok: #166534; --ok-soft: #eaf6ee;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--fg); background: var(--bg); }
+  header { background: linear-gradient(120deg, #155799, #159957); color: #fff; padding: 2.2rem 1rem 1.8rem; }
+  header .wrap { max-width: 820px; margin: 0 auto; }
+  header h1 { margin: 0 0 .3rem; font-size: 1.9rem; }
+  header p { margin: 0; opacity: .92; }
+  main { max-width: 820px; margin: 0 auto; padding: 1rem; }
+  section.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1.2rem 1.3rem; margin: 1rem 0; }
+  h2 { font-size: 1.25rem; margin: 0 0 .4rem; }
+  h3 { font-size: 1.05rem; margin: 1.2rem 0 .3rem; }
+  .muted { color: var(--muted); font-size: .93rem; }
+  .note { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: .7rem .9rem; border-radius: 6px; margin: .8rem 0; }
+  .alert { border-left: 4px solid var(--danger); background: var(--danger-soft); padding: .8rem 1rem; border-radius: 6px; margin: .8rem 0; }
+  .warn { border-left: 4px solid var(--warn); background: var(--warn-soft); padding: .7rem .9rem; border-radius: 6px; margin: .6rem 0; }
+  .alert h3, .warn h3 { margin-top: 0; }
+  ul { padding-left: 1.2rem; }
+  .q { padding: .8rem 0; border-top: 1px solid var(--line); }
+  .q:first-of-type { border-top: none; }
+  .q.missing { background: #fff8e1; margin: 0 -.6rem; padding-left: .6rem; padding-right: .6rem; border-radius: 6px; }
+  .q-text { margin-bottom: .45rem; }
+  .q-num { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: .35rem; }
+  .opts { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .opts label { flex: 1 1 0; min-width: 88px; border: 1px solid var(--line); border-radius: 8px; padding: .45rem .5rem; text-align: center; cursor: pointer; font-size: .9rem; background: #fff; user-select: none; transition: background .1s, border-color .1s; }
+  .opts label:hover { border-color: var(--accent); }
+  .opts input { position: absolute; opacity: 0; pointer-events: none; }
+  .opts label:has(input:checked) { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .opts label:has(input:focus-visible) { outline: 2px solid #155799; outline-offset: 2px; }
+  .opts .val { display: block; font-size: .75rem; opacity: .75; }
+  .opts.vertical { flex-direction: column; }
+  .opts.vertical label { text-align: left; min-width: 0; }
+  .change { background: #f3f6f9; border-radius: 8px; padding: .7rem .8rem; margin-top: .6rem; }
+  .change .q-text { font-size: .93rem; }
+  .checks label { display: flex; gap: .55rem; align-items: flex-start; padding: .35rem 0; cursor: pointer; }
+  .checks input { margin-top: .3rem; }
+  input[type=text] { font: inherit; padding: .5rem .6rem; border: 1px solid var(--line); border-radius: 8px; width: 100%; max-width: 360px; }
+  .btns { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1rem; }
+  button { font: inherit; padding: .65rem 1.2rem; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+  button.secondary { background: #fff; color: var(--accent); }
+  button:hover { filter: brightness(1.07); }
+  .progress { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: .5rem 0; }
+  .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  .bar > div { height: 100%; background: var(--accent); width: 0; transition: width .2s; }
+  .progress .muted { font-size: .8rem; margin-top: .2rem; }
+  #results { display: none; }
+  .verdict { font-size: 1.1rem; font-weight: 600; padding: .8rem 1rem; border-radius: 8px; margin: .6rem 0; }
+  .verdict.yes { background: var(--warn-soft); color: var(--warn); }
+  .verdict.some { background: #fff8e1; color: #854d0e; }
+  .verdict.no { background: var(--ok-soft); color: var(--ok); }
+  table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+  th, td { text-align: left; padding: .45rem .4rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  th { font-weight: 600; color: var(--muted); font-size: .82rem; text-transform: uppercase; letter-spacing: .03em; }
+  .dbar { position: relative; height: 10px; background: var(--line); border-radius: 5px; min-width: 90px; }
+  .dbar > div { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 5px; background: var(--accent); }
+  .dbar > div.hi { background: var(--warn); }
+  .dbar::after { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; border-left: 2px dashed #9aa5b1; }
+  .tag { display: inline-block; font-size: .75rem; padding: .05rem .45rem; border-radius: 10px; background: var(--line); color: var(--fg); white-space: nowrap; }
+  .tag.hi { background: var(--warn-soft); color: var(--warn); }
+  .criteria li { list-style: none; margin-left: -1.2rem; }
+  .criteria li::before { display: inline-block; width: 1.4rem; font-weight: 700; }
+  .criteria li.met::before { content: "\2713"; color: var(--ok); }
+  .criteria li.unmet::before { content: "\2717"; color: var(--muted); }
+  .big { font-size: 2rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .stats { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: .6rem 0; }
+  .stats > div { flex: 1 1 160px; background: #f3f6f9; border-radius: 8px; padding: .7rem .9rem; }
+  textarea { width: 100%; min-height: 220px; font: .82rem/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; border: 1px solid var(--line); border-radius: 8px; padding: .6rem; }
+  details { margin: .5rem 0; }
+  summary { cursor: pointer; font-weight: 600; }
+  footer { max-width: 820px; margin: 0 auto; padding: 1rem 1rem 3rem; color: var(--muted); font-size: .85rem; }
+  a { color: #155799; }
+  @media (max-width: 560px) {
+    main { padding: .5rem; }
+    section.card { padding: 1rem .8rem; }
+    .opts { gap: .25rem; }
+    .opts label { min-width: 0; font-size: .74rem; padding: .4rem .15rem; line-height: 1.25; hyphens: auto; }
+    .opts .val { font-size: .66rem; }
+    .opts.vertical label { font-size: .88rem; padding: .5rem .6rem; }
+    header h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Brain Fog Self-Check</h1>
+    <p>A structured, research-informed look at your thinking over the past two weeks. It takes about 8&ndash;10 minutes.</p>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Before you start</h2>
+    <p><strong>This is a screening aid, not a diagnosis.</strong> &ldquo;Brain fog&rdquo; is not a medical diagnosis. It is a loose label for problems with attention, memory, mental speed and mental fatigue, and it turns up in more than a dozen conditions. This questionnaire has <strong>not</strong> been clinically validated. Its thresholds are practical rules of thumb, not established cutoffs.</p>
+    <p class="muted">Also keep in mind that how foggy people <em>feel</em> matches their scores on objective cognitive tests only weakly. Mood, stress and sleep often explain more of the feeling. A high score here shows that you are bothered by these symptoms and that they affect your life. It does not tell you why.</p>
+    <div class="note"><strong>Privacy:</strong> everything runs in your browser. Your answers are never sent anywhere. They are saved only on this device so you don&rsquo;t lose your progress. At the end you can copy a text summary and share it if you want to.</div>
+    <div class="alert">
+      <h3>Stop and get urgent help (call emergency services) if you have <em>sudden</em>:</h3>
+      <ul>
+        <li>confusion, disorientation, or trouble speaking or understanding speech</li>
+        <li>weakness, numbness or drooping on one side of the face or body</li>
+        <li>loss of vision, double vision, or sudden loss of balance</li>
+        <li>a severe headache unlike any you have had before, or a seizure</li>
+      </ul>
+      <span class="muted">These can be signs of a stroke or another emergency. Get help even if the symptoms have gone away.</span>
+    </div>
+    <label for="name"><strong>Your name or initials</strong> <span class="muted">(optional; only appears in the summary you copy)</span></label><br>
+    <input type="text" id="name" autocomplete="off" maxlength="60">
+  </section>
+
+  <div class="progress"><div class="bar"><div id="pbar"></div></div><div class="muted" id="ptext"></div></div>
+
+  <form id="form" novalidate>
+    <section class="card" id="part1">
+      <h2>Part 1 &mdash; Thinking symptoms</h2>
+      <p class="muted">Over the <strong>past 2 weeks</strong>, how often did each of these happen? After each group, you&rsquo;ll also say whether that area has changed compared with your usual self.</p>
+      <div id="domains"></div>
+    </section>
+
+    <section class="card" id="part2">
+      <h2>Part 2 &mdash; Effect on daily life</h2>
+      <p class="muted">Over the <strong>past 2 weeks</strong>, how much have thinking difficulties&hellip;</p>
+      <div id="impact"></div>
+    </section>
+
+    <section class="card" id="part3">
+      <h2>Part 3 &mdash; Timeline</h2>
+      <div id="timeline"></div>
+    </section>
+
+    <section class="card" id="part4">
+      <h2>Part 4 &mdash; Mood and stress</h2>
+      <p class="muted">Over the <strong>last 2 weeks</strong>, how often have you been bothered by the following problems? <span class="muted">(These are the PHQ-4, a public-domain screening questionnaire.)</span></p>
+      <div id="mood"></div>
+    </section>
+
+    <section class="card" id="part5">
+      <h2>Part 5 &mdash; Sleep and exertion</h2>
+      <div id="sleep"></div>
+    </section>
+
+    <section class="card" id="part6">
+      <h2>Part 6 &mdash; Other possible contributors</h2>
+      <p class="muted">Tick anything that applies, especially if it started around the same time as the thinking problems. These don&rsquo;t affect the score. They go into the summary as things worth raising with a doctor.</p>
+      <div class="checks" id="context"></div>
+    </section>
+
+    <div class="btns">
+      <button type="submit">See my results</button>
+      <button type="button" class="secondary" id="reset">Clear all answers</button>
+    </div>
+    <p class="muted" id="formerr" style="color:#991b1b"></p>
+  </form>
+
+  <section class="card" id="results" aria-live="polite"></section>
+
+  <section class="card">
+    <details>
+      <summary>How this questionnaire was built (and its limits)</summary>
+      <h3>What it measures</h3>
+      <p>Part 1 covers six areas of thinking that research on brain fog keeps coming back to: attention, working memory, memory and word-finding, mental speed and clarity, planning and organising (executive function), and mental fatigue. These are the same areas covered by established self-report measures such as PROMIS Cognitive Function and the Cognitive Failures Questionnaire. Parts 2&ndash;6 separate <em>how much</em> the symptoms bother you from <em>what might be causing them</em>.</p>
+      <h3>Changes from the earlier draft</h3>
+      <ul>
+        <li><strong>How often vs. how you&rsquo;ve changed.</strong> The earlier items asked both at once (e.g. &ldquo;more than it used to&rdquo; answered on a never&ndash;always scale). Now each item asks only how often something happens, and each area gets its own &ldquo;compared with your usual self&rdquo; question. This replaces the earlier asterisk marks.</li>
+        <li><strong>One idea per question.</strong> Items that bundled several questions into one (for example understanding, deciding <em>and</em> responding) were split or simplified.</li>
+        <li><strong>Clearer answer options.</strong> Each option now says roughly how often it means (e.g. &ldquo;most days&rdquo;), so &ldquo;often&rdquo; means the same thing to everyone.</li>
+        <li><strong>A separate scale for effects on daily life.</strong> &ldquo;How much&rdquo; replaces &ldquo;how often&rdquo; here, and &ldquo;other people noticed&rdquo; became a yes/no question.</li>
+        <li><strong>Mood is now screened.</strong> Depression and anxiety are strongly linked to <em>feeling</em> foggy, so the public-domain PHQ-4 is included and taken into account in the results.</li>
+        <li><strong>Specific checks for sleep, sleep apnoea and post-exertional malaise</strong> replaced single catch-all questions.</li>
+        <li><strong>A clear duration question</strong>, and a note in the results if the pattern looks lifelong rather than new.</li>
+      </ul>
+      <h3>Known limits</h3>
+      <ul>
+        <li>No clinical validation. Thresholds (area average &ge; 2.0, i.e. &ldquo;sometimes&rdquo; or more often) are rules of thumb. There are no population norms, so comparing with friends tells you about your friends, not about what&rsquo;s &ldquo;normal&rdquo;.</li>
+        <li>Answering from memory about two weeks is affected by your current mood. For a more reliable picture, rate clarity, concentration, memory, speed and mental fatigue (0&ndash;4) every evening for a week, and note your sleep.</li>
+        <li>Validated tools exist but are licensed and can&rsquo;t be reproduced here. <a href="https://www.healthmeasures.net/explore-measurement-systems/promis" target="_blank" rel="noopener">PROMIS Cognitive Function</a> gives standardised T-scores, and a clinician can give it to you. The <em>Brain Fog Scale</em> (Debowska et al., 2024) is copyrighted and has no validated cutoffs yet.</li>
+      </ul>
+      <h3>Key sources</h3>
+      <ul class="muted">
+        <li>Denno P, Zhao S, Husain M, Hampshire A. Defining brain fog across medical conditions. <em>Trends Neurosci</em> 2025;48:330&ndash;348. <a href="https://pubmed.ncbi.nlm.nih.gov/40011078/" target="_blank" rel="noopener">PubMed</a></li>
+        <li>Van Patten R, et al. Subjective and objective cognitive functioning: an umbrella review and meta-analysis (r = 0.14, N = 92,606). <em>Clin Psychol Rev</em> 2025;121:102648. <a href="https://pubmed.ncbi.nlm.nih.gov/40945212/" target="_blank" rel="noopener">PubMed</a></li>
+        <li>Debowska A, et al. Brain Fog Scale: development and validation. <em>Pers Individ Dif</em> 2024;216:112427.</li>
+        <li>PROMIS Cognitive Function Scoring Manual, HealthMeasures (2022).</li>
+        <li>Broadbent DE, et al. The Cognitive Failures Questionnaire. <em>Br J Clin Psychol</em> 1982;21:1&ndash;16.</li>
+        <li>Kroenke K, et al. An ultra-brief screening scale for anxiety and depression: the PHQ-4. <em>Psychosomatics</em> 2009;50:613&ndash;621.</li>
+        <li>NICE NG206 (2021), ME/CFS: definition of post-exertional malaise. <a href="https://www.nice.org.uk/guidance/ng206" target="_blank" rel="noopener">NICE</a></li>
+        <li>US FDA, Patient-Reported Outcome Measures guidance (2009), on recall periods and asking people to compare with the past.</li>
+        <li>NHS, Stroke symptoms and Confusion guidance; Aroor et al., BE-FAST, <em>Stroke</em> 2017.</li>
+      </ul>
+    </details>
+  </section>
+</main>
+
+<footer>Not medical advice. If thinking problems last for weeks, get worse, or get in the way of work, driving or safety, see a doctor. Many causes (sleep disorders, thyroid problems, low B12, side effects of medicines, low mood) are treatable.</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------- Question bank ----------
+  var FREQ = [
+    ["Never", ""], ["Rarely", "once or twice"], ["Sometimes", "a few times"],
+    ["Often", "most days"], ["Almost always", "every day"]
+  ];
+  var CHANGE = [["Better or the same", 0], ["A little worse", 1], ["Much worse", 2], ["Not sure", -1]];
+  var DOMAINS = [
+    { id: "att", name: "Attention", items: [
+      "I lost concentration while reading, working, or following a conversation.",
+      "My attention was pulled away by distractions (sounds, notifications, my own thoughts).",
+      "I had to reread something or ask someone to repeat themselves because my mind had drifted." ] },
+    { id: "wm", name: "Working memory", items: [
+      "I struggled to hold several pieces of information in mind at once (e.g. mental arithmetic, multi-step directions).",
+      "I lost track of what I was saying or thinking partway through.",
+      "I forgot what I was about to do moments after deciding to do it (e.g. walking into a room and forgetting why)." ] },
+    { id: "mem", name: "Memory & word-finding", items: [
+      "I had trouble remembering recent conversations or instructions.",
+      "New information needed more repetition than I would expect before it stuck.",
+      "I knew a word or name but couldn't retrieve it when I needed it." ] },
+    { id: "spd", name: "Speed & clarity", items: [
+      "My thinking felt slow.",
+      "My mind felt hazy or \u201ccloudy\u201d even when I wasn't sleepy.",
+      "Simple mental tasks took more effort than they should." ] },
+    { id: "exe", name: "Planning & organising", items: [
+      "I had difficulty organising or prioritising my tasks.",
+      "I found it hard to switch between tasks or topics.",
+      "I had trouble planning or finishing tasks that involve several steps." ] },
+    { id: "fat", name: "Mental fatigue", items: [
+      "Mental effort tired me out quickly.",
+      "My thinking got noticeably worse the longer I concentrated.",
+      "I needed extra breaks to keep thinking clearly." ] }
+  ];
+  var HOWMUCH = [["Not at all", 0], ["A little", 1], ["Somewhat", 2], ["Quite a bit", 3], ["Very much", 4]];
+  var IMPACT = [
+    { id: "i1", text: "reduced your productivity at work, study or daily responsibilities?" },
+    { id: "i2", text: "led to mistakes, missed appointments or forgotten obligations?" },
+    { id: "i3", text: "got in the way of conversations or your social life?" },
+    { id: "i4", text: "affected tasks where mistakes matter for safety, such as driving, cooking, medications or finances?" },
+    { id: "i5", text: "made you rely on notes, reminders or alarms more than you normally would?" }
+  ];
+  var TIMELINE = [
+    { id: "dur", text: "How long have you had these thinking difficulties?", opts: [
+      ["Less than 2 weeks", "lt2w"], ["2\u20136 weeks", "2to6w"], ["6 weeks \u2013 3 months", "6wto3m"],
+      ["More than 3 months", "gt3m"], ["As long as I can remember", "life"], ["I don't really have any", "none"] ] },
+    { id: "onset", text: "How did they begin?", opts: [
+      ["Suddenly (minutes to hours)", "sudden"], ["Over a few days", "days"], ["Gradually (weeks to months)", "gradual"],
+      ["It's always been like this", "always"], ["Not sure / not applicable", "na"] ] },
+    { id: "course", text: "Recently, have they been\u2026", opts: [
+      ["Getting better", "better"], ["Stable", "stable"], ["Up and down", "fluct"], ["Getting worse", "worse"], ["Not applicable", "na"] ] },
+    { id: "noticed", text: "Has someone who knows you well noticed a change in your attention, memory or thinking?", opts: [
+      ["Yes", "yes"], ["No", "no"], ["Not sure", "unsure"] ] }
+  ];
+  var PHQ = [["Not at all", 0], ["Several days", 1], ["More than half the days", 2], ["Nearly every day", 3]];
+  var MOOD = [
+    { id: "m1", text: "Feeling nervous, anxious or on edge" },
+    { id: "m2", text: "Not being able to stop or control worrying" },
+    { id: "m3", text: "Little interest or pleasure in doing things" },
+    { id: "m4", text: "Feeling down, depressed or hopeless" }
+  ];
+  var SLEEP = [
+    { id: "s1", text: "On a typical night in the past 2 weeks, how many hours did you actually sleep?", opts: [
+      ["Under 5", "lt5"], ["5\u20136", "5to6"], ["6\u20137", "6to7"], ["7\u20139", "7to9"], ["Over 9", "gt9"] ] },
+    { id: "s2", text: "Overall, how would you rate your sleep quality in the past 2 weeks?", opts: [
+      ["Very good", "vgood"], ["Fairly good", "fgood"], ["Fairly bad", "fbad"], ["Very bad", "vbad"] ] },
+    { id: "s3", text: "Do you snore loudly, wake up gasping or choking, or has anyone seen you stop breathing in your sleep?", opts: [
+      ["Yes", "yes"], ["No", "no"], ["Don't know", "unsure"] ] },
+    { id: "s4", text: "In the past 2 weeks, did you nod off or struggle to stay awake during the day without meaning to (e.g. reading, in meetings, as a passenger)?", opts: [
+      ["Never", "never"], ["Once or twice", "some"], ["Several times or more", "often"] ] },
+    { id: "p1", text: "After a physical or mental effort you used to manage fine, do your symptoms (including thinking) get noticeably worse?", opts: [
+      ["No", "no"], ["Sometimes", "some"], ["Often", "often"] ] },
+    { id: "p2", text: "If so: does this worsening often start hours to a day later and last 24 hours or more?", opts: [
+      ["Yes", "yes"], ["No", "no"], ["Not sure / not applicable", "na"] ] }
+  ];
+  var CONTEXT = [
+    ["infection", "It began after COVID-19 or another significant infection"],
+    ["head", "It began after a concussion, head injury or accident"],
+    ["meds", "I started, stopped or changed a medication or supplement around that time"],
+    ["subst", "My alcohol, cannabis or other substance use has changed"],
+    ["stress", "A period of major stress, burnout or big life upheaval began around the same time"],
+    ["ortho", "Standing up, heat, or standing for a long time brings on dizziness, a racing heart, or worse thinking"],
+    ["b12", "Numbness or tingling, balance problems, or a restrictive diet (e.g. vegan without B12 supplements)"],
+    ["thyroid", "Unexplained weight change, feeling unusually cold, constipation, or a change in heart rate"],
+    ["hormone", "A hormonal change (pregnancy or postpartum, perimenopause or menopause, starting or changing hormone treatment)"],
+    ["headache", "Headaches or migraines are more frequent or different than before"],
+    ["pain", "Chronic pain or marked physical fatigue"],
+    ["adhd", "Diagnosed ADHD, a learning disorder, or lifelong attention difficulties"]
+  ];
+
+  // ---------- Rendering ----------
+  var n = 0, req = [];
+  function el(tag, attrs, html) {
+    var e = document.createElement(tag);
+    for (var k in attrs || {}) e.setAttribute(k, attrs[k]);
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+  function radioGroup(name, text, opts, numbered, extraClass, sub) {
+    var wrap = el("div", { "class": "q " + (extraClass || ""), "data-q": name });
+    var num = numbered ? '<span class="q-num">' + (++n) + '.</span>' : "";
+    wrap.appendChild(el("div", { "class": "q-text", id: "lbl-" + name }, num + text));
+    var g = el("div", { "class": "opts" + (opts.length > 5 || (opts[0][0].length > 22) ? " vertical" : ""), role: "radiogroup", "aria-labelledby": "lbl-" + name });
+    opts.forEach(function (o, i) {
+      var val = o[1] == null ? i : o[1];
+      var l = el("label");
+      var inp = el("input", { type: "radio", name: name, value: String(val) });
+      l.appendChild(inp);
+      l.appendChild(el("span", {}, o[0] + (sub && sub[i] ? '<span class="val">' + sub[i] + '</span>' : "")));
+      g.appendChild(l);
+    });
+    wrap.appendChild(g);
+    req.push(name);
+    return wrap;
+  }
+
+  var dRoot = document.getElementById("domains");
+  DOMAINS.forEach(function (d) {
+    dRoot.appendChild(el("h3", {}, d.name));
+    d.items.forEach(function (t, j) {
+      var sub = FREQ.map(function (f) { return f[1]; });
+      var opts = FREQ.map(function (f, i) { return [f[0], i]; });
+      dRoot.appendChild(radioGroup(d.id + (j + 1), t, opts, true, "", sub));
+    });
+    var c = radioGroup(d.id + "_chg", "Compared with your usual self (before any of this started), your <strong>" + d.name.toLowerCase() + "</strong> is\u2026", CHANGE, false, "change");
+    dRoot.appendChild(c);
+  });
+  var iRoot = document.getElementById("impact");
+  IMPACT.forEach(function (q) { iRoot.appendChild(radioGroup(q.id, "\u2026" + q.text, HOWMUCH, true)); });
+  var tRoot = document.getElementById("timeline");
+  TIMELINE.forEach(function (q) { tRoot.appendChild(radioGroup(q.id, q.text, q.opts, true)); });
+  var mRoot = document.getElementById("mood");
+  MOOD.forEach(function (q) { mRoot.appendChild(radioGroup(q.id, q.text, PHQ, true)); });
+  var sRoot = document.getElementById("sleep");
+  SLEEP.forEach(function (q) { sRoot.appendChild(radioGroup(q.id, q.text, q.opts, true)); });
+  var cRoot = document.getElementById("context");
+  CONTEXT.forEach(function (c) {
+    var l = el("label");
+    l.appendChild(el("input", { type: "checkbox", name: "ctx", value: c[0] }));
+    l.appendChild(el("span", {}, c[1]));
+    cRoot.appendChild(l);
+  });
+  var OPTIONAL = { p2: true }; // p2 only matters if p1 != no
+
+  // ---------- State / persistence ----------
+  var form = document.getElementById("form");
+  var KEY = "brainFogCheck.v1";
+  function readForm() {
+    var a = {};
+    req.forEach(function (name) {
+      var c = form.querySelector('input[name="' + name + '"]:checked');
+      a[name] = c ? c.value : null;
+    });
+    a.ctx = [].slice.call(form.querySelectorAll('input[name="ctx"]:checked')).map(function (x) { return x.value; });
+    a.name = document.getElementById("name").value.trim();
+    return a;
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(readForm())); } catch (e) {} }
+  function load() {
+    var a; try { a = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (!a) return;
+    req.forEach(function (name) {
+      if (a[name] == null) return;
+      var i = form.querySelector('input[name="' + name + '"][value="' + a[name] + '"]');
+      if (i) i.checked = true;
+    });
+    (a.ctx || []).forEach(function (v) { var i = form.querySelector('input[name="ctx"][value="' + v + '"]'); if (i) i.checked = true; });
+    if (a.name) document.getElementById("name").value = a.name;
+  }
+  function progress() {
+    var a = readForm(), need = req.filter(function (r) { return !OPTIONAL[r]; });
+    var done = need.filter(function (r) { return a[r] != null; }).length;
+    document.getElementById("pbar").style.width = (100 * done / need.length) + "%";
+    document.getElementById("ptext").textContent = done + " of " + need.length + " answered";
+  }
+  form.addEventListener("change", function (e) {
+    var q = e.target.closest(".q"); if (q) q.classList.remove("missing");
+    save(); progress();
+  });
+  document.getElementById("name").addEventListener("input", save);
+  document.getElementById("reset").addEventListener("click", function () {
+    if (!confirm("Clear all answers?")) return;
+    form.reset(); document.getElementById("name").value = "";
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    document.getElementById("results").style.display = "none";
+    document.querySelectorAll(".missing").forEach(function (x) { x.classList.remove("missing"); });
+    progress(); window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // ---------- Scoring (pure) ----------
+  function score(a) {
+    var r = { domains: [], flags: [], criteria: [] };
+    var total = 0;
+    DOMAINS.forEach(function (d) {
+      var s = 0;
+      for (var j = 1; j <= 3; j++) s += Number(a[d.id + j]);
+      var chg = Number(a[d.id + "_chg"]);
+      var avg = s / 3;
+      total += s;
+      r.domains.push({ id: d.id, name: d.name, avg: avg, notable: avg >= 2, change: chg });
+    });
+    r.total = total;                           // 0..72
+    r.index = Math.round(total / 72 * 100);    // 0..100
+    r.notable = r.domains.filter(function (d) { return d.notable; });
+    r.worse = r.domains.filter(function (d) { return d.change >= 1; });
+    r.notableWorse = r.notable.filter(function (d) { return d.change >= 1; });
+
+    var imp = IMPACT.map(function (q) { return Number(a[q.id]); });
+    r.impactMax = Math.max.apply(null, imp);
+    r.impactAvg = imp.reduce(function (x, y) { return x + y; }, 0) / imp.length;
+    r.safety = Number(a.i4);
+
+    r.gad2 = Number(a.m1) + Number(a.m2);
+    r.phq2 = Number(a.m3) + Number(a.m4);
+    r.phq4 = r.gad2 + r.phq2;
+    r.phq4Band = r.phq4 <= 2 ? "normal" : r.phq4 <= 5 ? "mild" : r.phq4 <= 8 ? "moderate" : "severe";
+
+    var dur = a.dur;
+    var durOK = ["2to6w", "6wto3m", "gt3m"].indexOf(dur) >= 0;
+    var lifelong = dur === "life" || a.onset === "always";
+
+    var c1 = r.notable.length >= 2;
+    var c2 = r.notableWorse.length >= 1 && !lifelong;
+    var c3 = r.impactMax >= 2;
+    var c4 = durOK;
+    r.criteria = [
+      { met: c1, text: "At least 2 areas at \u201csometimes\u201d or more often on average (" + r.notable.length + " of 6)" },
+      { met: c2, text: "At least one of those areas is worse than your usual self" + (lifelong ? " (you described it as lifelong)" : "") },
+      { met: c3, text: "The difficulties affect daily life at least \u201csomewhat\u201d" },
+      { met: c4, text: "They have lasted at least 2 weeks and are not lifelong" }
+    ];
+    var met = [c1, c2, c3, c4].filter(Boolean).length;
+    if (met === 4) r.verdict = "yes";
+    else if (r.notable.length >= 1 || r.total >= 27 || (met >= 2 && c1)) r.verdict = "some";
+    else r.verdict = "no";
+
+    // Context flags
+    var F = r.flags;
+    if (a.onset === "sudden") F.push(["alert", "Sudden onset", "Thinking problems that start within minutes or hours should be checked by a doctor promptly, rather than tracked at home. If they came with any of the warning signs listed at the top, get emergency care."]);
+    if (r.safety >= 3) F.push(["alert", "Safety", "You reported that these difficulties noticeably affect safety-related tasks. Consider avoiding driving and double-checking medications until a doctor has assessed you."]);
+    if (r.phq2 >= 3) F.push(["warn", "Low mood (PHQ-2 = " + r.phq2 + ")", "This is at or above the usual screening threshold for depression. Depression very often causes or worsens brain fog, and it is treatable. Please mention it to a doctor. If you are having thoughts of harming yourself, contact a crisis line or emergency services now."]);
+    if (r.gad2 >= 3) F.push(["warn", "Anxiety (GAD-2 = " + r.gad2 + ")", "This is at or above the usual screening threshold for an anxiety disorder. Anxiety and persistent worry take up attention and working memory, and can feel exactly like brain fog."]);
+    var shortSleep = a.s1 === "lt5" || a.s1 === "5to6";
+    var badSleep = a.s2 === "fbad" || a.s2 === "vbad";
+    if (shortSleep || badSleep) F.push(["warn", "Sleep", (shortSleep ? "You're averaging under 6 hours a night. " : "") + (badSleep ? "You rate your sleep quality as poor. " : "") + "Not getting enough sleep impairs attention, working memory and executive function. It is one of the most common causes of brain fog and the first thing worth fixing."]);
+    if (a.s3 === "yes" || a.s4 === "often") F.push(["warn", "Possible sleep-disordered breathing or excessive sleepiness", "Loud snoring, gasping or pauses in breathing, or falling asleep during the day without meaning to, are reasons to ask a doctor about a sleep study (e.g. for sleep apnoea). It is a common and treatable cause of brain fog."]);
+    if (a.p1 === "often" || (a.p1 === "some" && a.p2 === "yes")) F.push(["warn", "Post-exertional worsening", "Symptoms that get worse after effort, especially when the worsening is delayed and lasts 24 hours or more, are a hallmark of post-exertional malaise. It is seen in ME/CFS and long COVID. Mention it to a doctor, and avoid pushing through by increasing effort."]);
+    if (dur === "gt3m" && r.verdict !== "no") F.push(["warn", "Persistent symptoms", "Symptoms lasting more than 3 months are worth a medical check. Common tests look for treatable causes such as thyroid function, B12, iron or anaemia, blood sugar, and medication side effects."]);
+    if (a.course === "worse" && r.verdict !== "no") F.push(["warn", "Getting worse", "Symptoms that keep getting worse should be assessed by a doctor rather than monitored indefinitely."]);
+    if (lifelong && r.notable.length >= 2) F.push(["info", "Longstanding pattern", "You describe these difficulties as lifelong rather than new. That is more consistent with a stable trait, or with conditions like ADHD, than with brain fog, which usually means a change from your normal."]);
+    r.ctx = a.ctx || [];
+    return r;
+  }
+
+  // ---------- Results ----------
+  var VERDICT = {
+    yes: "Your answers are consistent with brain fog",
+    some: "Some features of brain fog, but not the full pattern",
+    no: "Your answers don't suggest brain fog"
+  };
+  var VERDICT_EXPL = {
+    yes: "You reported several areas of thinking affected, a change from your usual self, a real effect on daily life, and a meaningful duration. This does not tell you <em>why</em>. The possible contributors below, and a visit to a doctor, are the next step.",
+    some: "You have some notable symptoms, but not every part of the pattern (see the checklist). This is common. It is worth watching, especially if any of the contributors below apply.",
+    no: "Your answers show few or infrequent difficulties. Everyone has occasional lapses. If something still feels off, the week-long daily rating described in the notes at the bottom of the page can pick up patterns that a single questionnaire misses."
+  };
+  function changeLabel(c) { return c === 2 ? "much worse" : c === 1 ? "a little worse" : c === 0 ? "same/better" : "not sure"; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function ctxLabel(v) { for (var i = 0; i < CONTEXT.length; i++) if (CONTEXT[i][0] === v) return CONTEXT[i][1]; return v; }
+
+  function optLabel(name, v) {
+    if (v == null) return "?";
+    var qs = TIMELINE.concat(SLEEP);
+    for (var i = 0; i < qs.length; i++) if (qs[i].id === name)
+      for (var j = 0; j < qs[i].opts.length; j++) if (qs[i].opts[j][1] === v) return qs[i].opts[j][0].toLowerCase();
+    return v;
+  }
+  function summaryText(a, r) {
+    var L = [];
+    L.push("Brain Fog Self-Check \u2014 " + new Date().toISOString().slice(0, 10) + (a.name ? " \u2014 " + a.name : ""));
+    L.push("Result: " + VERDICT[r.verdict]);
+    L.push("Symptom index: " + r.index + "/100 (raw " + r.total + "/72)");
+    L.push("");
+    L.push("Areas (average 0\u20134; \u22652 = notable):");
+    r.domains.forEach(function (d) {
+      L.push("  " + (d.name + ":                          ").slice(0, 24) + d.avg.toFixed(2) + (d.notable ? " *" : "  ") + "  change: " + changeLabel(d.change));
+    });
+    L.push("Daily-life impact: avg " + r.impactAvg.toFixed(1) + "/4, max " + r.impactMax + "/4");
+    L.push("PHQ-4: " + r.phq4 + "/12 (" + r.phq4Band + "); PHQ-2 " + r.phq2 + ", GAD-2 " + r.gad2);
+    var o = optLabel;
+    L.push("Duration: " + o("dur", a.dur) + "; onset: " + o("onset", a.onset) + "; course: " + o("course", a.course) + "; others noticed: " + o("noticed", a.noticed));
+    L.push("Sleep: " + o("s1", a.s1) + " h/night, quality " + o("s2", a.s2) + ", snoring/apnoea signs " + o("s3", a.s3) + ", daytime dozing " + o("s4", a.s4));
+    L.push("Worse after exertion: " + o("p1", a.p1) + (a.p2 ? "; delayed/long-lasting: " + o("p2", a.p2) : ""));
+    if (r.flags.length) L.push("Flags: " + r.flags.map(function (f) { return f[1]; }).join("; "));
+    if (r.ctx.length) L.push("Contributors ticked: " + r.ctx.join(", "));
+    L.push("Raw: " + req.map(function (k) { return k + "=" + (a[k] == null ? "-" : a[k]); }).join(" "));
+    return L.join("\n");
+  }
+
+  function render(a, r) {
+    var h = [];
+    h.push("<h2>Your results" + (a.name ? " \u2014 " + esc(a.name) : "") + "</h2>");
+    h.push('<div class="verdict ' + r.verdict + '">' + VERDICT[r.verdict] + "</div>");
+    h.push("<p>" + VERDICT_EXPL[r.verdict] + "</p>");
+    h.push('<ul class="criteria">' + r.criteria.map(function (c) { return '<li class="' + (c.met ? "met" : "unmet") + '">' + c.text + "</li>"; }).join("") + "</ul>");
+
+    h.push('<div class="stats">');
+    h.push('<div><div class="muted">Symptom index</div><div class="big">' + r.index + '<span class="muted" style="font-size:1rem">/100</span></div><div class="muted">From all 18 symptom questions. Useful for tracking over time or comparing with friends.</div></div>');
+    h.push('<div><div class="muted">Effect on daily life</div><div class="big">' + r.impactAvg.toFixed(1) + '<span class="muted" style="font-size:1rem">/4</span></div><div class="muted">Average; highest single answer ' + r.impactMax + "/4.</div></div>");
+    h.push('<div><div class="muted">Mood screen (PHQ-4)</div><div class="big">' + r.phq4 + '<span class="muted" style="font-size:1rem">/12</span></div><div class="muted">' + r.phq4Band.charAt(0).toUpperCase() + r.phq4Band.slice(1) + " range (validated bands).</div></div>");
+    h.push("</div>");
+
+    h.push("<h3>By area</h3>");
+    h.push('<p class="muted">Average 0&ndash;4 for each area. The dashed line marks 2 (&ldquo;sometimes&rdquo;), the rule-of-thumb level for &ldquo;notable&rdquo;.</p>');
+    h.push("<table><thead><tr><th>Area</th><th style=\"width:38%\">Frequency</th><th>Avg</th><th>vs. usual</th></tr></thead><tbody>");
+    r.domains.forEach(function (d) {
+      h.push("<tr><td>" + d.name + '</td><td><div class="dbar"><div class="' + (d.notable ? "hi" : "") + '" style="width:' + (d.avg / 4 * 100) + '%"></div></div></td><td>' + d.avg.toFixed(1) + (d.notable ? ' <span class="tag hi">notable</span>' : "") + '</td><td><span class="tag' + (d.change >= 1 ? " hi" : "") + '">' + changeLabel(d.change) + "</span></td></tr>");
+    });
+    h.push("</tbody></table>");
+
+    if (r.flags.length) {
+      h.push("<h3>Things worth attention</h3>");
+      r.flags.forEach(function (f) {
+        h.push('<div class="' + (f[0] === "alert" ? "alert" : f[0] === "warn" ? "warn" : "note") + '"><strong>' + f[1] + ".</strong> " + f[2] + "</div>");
+      });
+    }
+    if (r.ctx.length) {
+      h.push("<h3>Possible contributors you ticked</h3><ul>" + r.ctx.map(function (v) { return "<li>" + ctxLabel(v) + "</li>"; }).join("") + "</ul>");
+      h.push('<p class="muted">Worth raising with a doctor, who can decide whether any tests make sense.</p>');
+    }
+
+    h.push("<h3>Share or save</h3>");
+    h.push('<p class="muted">This text summary includes your raw answers, so results can be compared. Nothing is sent anywhere unless you paste it somewhere yourself.</p>');
+    h.push('<textarea id="summary" readonly></textarea>');
+    h.push('<div class="btns"><button type="button" id="copy">Copy summary</button><button type="button" class="secondary" id="edit">Edit answers</button></div>');
+    h.push('<p class="muted" style="margin-top:1rem">Reminder: this is an unvalidated screen. It describes the symptoms you report, not their cause. There are no population norms, so a friend&rsquo;s score is a comparison, not a benchmark.</p>');
+
+    var box = document.getElementById("results");
+    box.innerHTML = h.join("");
+    box.style.display = "block";
+    document.getElementById("summary").value = summaryText(a, r);
+    document.getElementById("copy").addEventListener("click", function () {
+      var t = document.getElementById("summary");
+      var done = function () { document.getElementById("copy").textContent = "Copied!"; setTimeout(function () { document.getElementById("copy").textContent = "Copy summary"; }, 1500); };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t.value).then(done, function () { t.select(); document.execCommand("copy"); done(); });
+      else { t.select(); document.execCommand("copy"); done(); }
+    });
+    document.getElementById("edit").addEventListener("click", function () { document.getElementById("part1").scrollIntoView({ behavior: "smooth" }); });
+    box.scrollIntoView({ behavior: "smooth" });
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var a = readForm();
+    var missing = req.filter(function (k) { return a[k] == null && !OPTIONAL[k]; });
+    document.querySelectorAll(".missing").forEach(function (x) { x.classList.remove("missing"); });
+    var err = document.getElementById("formerr");
+    if (missing.length) {
+      missing.forEach(function (k) { var q = form.querySelector('[data-q="' + k + '"]'); if (q) q.classList.add("missing"); });
+      err.textContent = missing.length + " question" + (missing.length > 1 ? "s are" : " is") + " unanswered (highlighted).";
+      form.querySelector('[data-q="' + missing[0] + '"]').scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+    err.textContent = "";
+    render(a, score(a));
+  });
+
+  load(); progress();
+  window.__brainFog = { score: score, readForm: readForm, summaryText: summaryText, req: req };
+})();
+</script>
+</body>
+</html>
